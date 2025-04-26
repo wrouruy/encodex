@@ -1,16 +1,16 @@
 def CaesarCipher(string, shifting):
-    endString = ''
+    result = ''
     for i in string:
-        endString += chr(ord(i) + shifting)
-    return endString
+        result += chr(ord(i) + shifting)
+    return result
 # print(CaesarCipher('Ifmmp-!xpsme"', -1)) # output: Hello, world!
 
-def atbashCipher(text):
+def atbashCipher(string):
     def transform(char, start, end):
         return chr(start + end - ord(char))
     result = ''
 
-    for char in text:
+    for char in string:
         if 'A' <= char <= 'Z':
             result += transform(char, ord('A'), ord('Z'))
         elif 'a' <= char <= 'z':
@@ -21,6 +21,9 @@ def atbashCipher(text):
             result += transform(char, ord('а'), ord('я'))
         else:
             result += char
-
     return result
 # print(atbashCipher('Svool, dliow!')) # output: Hello, world!
+
+def mirrorCipher(string):
+    return ''.join(list(string)[::-1])
+# print(mirrorCipher('!dlrow ,olleH')) # output: Hello, world!
